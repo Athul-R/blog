@@ -21,7 +21,7 @@ This blog is about AWS Batch Jobs and various ways you can create workflows usin
 
       Before delving to setting up the environment, let's see few more definitions pertaining to the AWS Batch Jobs.
 
-      - **Jobs**: The basic unit of work executed by AWS Batch. [^8] It is executed as containerized applications in ECS. A job is abraction of a single container in ECS and its Job definition parameters. You can read about submitting the job over [here](https://docs.aws.amazon.com/batch/latest/userguide/submit_job.html).
+      - **Jobs**: The basic unit of work executed by AWS Batch. [^1] It is executed as containerized applications in ECS. A job is abraction of a single container in ECS and its Job definition parameters. You can read about submitting the job over [here](https://docs.aws.amazon.com/batch/latest/userguide/submit_job.html).
 
       - **Jobs Definition**:  It delineates how a job would be run. It specifies properties such as which docker image to use, what IAM Role should be assigned to the container etc. An example Job definition can be found [here](https://docs.aws.amazon.com/batch/latest/userguide/example-job-definitions.html). You can read in detail about job definition over [here](https://docs.aws.amazon.com/batch/latest/userguide/example-job-definitions.html).
 
@@ -52,11 +52,11 @@ This blog is about AWS Batch Jobs and various ways you can create workflows usin
 
    3. **Docker Image**
 
-      Each job runs as a container, hence each jobs requires a docker image that it would pull from the repository and build and deploy the container in an EC2 instance. The docker respository can be either the  Docker Hub registry or the AWS EKR. If you choose an image from the AWS EKR, you should `aws_account_id.dkr.ecr.region.amazonaws.com/my-web-app:latest` [^9].
+      Each job runs as a container, hence each jobs requires a docker image that it would pull from the repository and build and deploy the container in an EC2 instance. The docker respository can be either the  Docker Hub registry or the AWS EKR. If you choose an image from the AWS EKR, you should `aws_account_id.dkr.ecr.region.amazonaws.com/my-web-app:latest` [^2].
 
    4. **Resources**
 
-      The resources that are allotted to the job includes vCPUs and Memory. vCPU (Virtual CPUs) must be atleast 1. Memory specified would the maximum memory that the job can have during its execution. If the container exceeds this memory limit, it is killed. The min. memory to be specified is 4MiB[^9].
+      The resources that are allotted to the job includes vCPUs and Memory. vCPU (Virtual CPUs) must be atleast 1. Memory specified would the maximum memory that the job can have during its execution. If the container exceeds this memory limit, it is killed. The min. memory to be specified is 4MiB[^2].
 
 
 
@@ -125,7 +125,7 @@ This blog is about AWS Batch Jobs and various ways you can create workflows usin
 
 ​	Once you have the jobId of job A, then you can submit job B stating that it depends on job A.
 
-​	Note that **job B must be of type SEQUENTIAL** or **N_TO_N** depending on whether job A is a an Array 	Job or not[^10][^11][^12]. In the code snipped given below note that job B has type **SEQUENTIAL**
+​	Note that **job B must be of type SEQUENTIAL** or **N_TO_N** depending on whether job A is a an Array 	Job or not[^3][^4][^5]. In the code snipped given below note that job B has type **SEQUENTIAL**
 
 ```python
 job_b = dict(
@@ -186,4 +186,11 @@ An array job is job run parallel or concurrently in same host or mutliple host m
 
 ![img](../images/Array%20Jobs%20AWS.png?lastModify=1556521526)
 
-- Both in case of SEQUENTIAL and N_TO_N dependant jobs, cancellation or termination of any of the array jobs of Job X would lead to the cancellation of job X. This 'moves'  job X to `FAILED` status.[^12]
+- Both in case of SEQUENTIAL and N_TO_N dependant jobs, cancellation or termination of any of the array jobs of Job X would lead to the cancellation of job X. This 'moves'  job X to `FAILED` status.[^5]
+
+[^1]: <https://docs.aws.amazon.com/batch/latest/userguide/jobs.html>
+[^2]: <https://docs.aws.amazon.com/batch/latest/userguide/create-job-definition.html>
+[^3]: <https://docs.aws.amazon.com/batch/latest/userguide/job_dependencies.html>
+[^4]: <https://docs.aws.amazon.com/batch/latest/userguide/submit_job.html>
+[^5 ]: <https://docs.aws.amazon.com/batch/latest/userguide/array_jobs.html>
+
