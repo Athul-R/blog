@@ -192,5 +192,5 @@ An array job is job run parallel or concurrently in same host or mutliple host m
 [^2]: <https://docs.aws.amazon.com/batch/latest/userguide/create-job-definition.html>
 [^3]: <https://docs.aws.amazon.com/batch/latest/userguide/job_dependencies.html>
 [^4]: <https://docs.aws.amazon.com/batch/latest/userguide/submit_job.html>
-[^5 ]: <https://docs.aws.amazon.com/batch/latest/userguide/array_jobs.html>
+[^5]: <https://docs.aws.amazon.com/batch/latest/userguide/array_jobs.html>
 
