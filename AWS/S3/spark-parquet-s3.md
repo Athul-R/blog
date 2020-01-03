@@ -160,10 +160,10 @@ If you want to skip the introduction section, you can [jump to here](#major-chal
 
 
 
-[^1]: https://codeburst.io/amazon-s3-pros-cons-and-how-to-use-it-with-javascript-701fffc89154
+[^1]: <https://codeburst.io/amazon-s3-pros-cons-and-how-to-use-it-with-javascript-701fffc89154>
 [^2]: <https://parquet.apache.org/>
 [^3]: <https://spark.apache.org/docs/latest/>
-[^ 3a]: https://en.wikipedia.org/wiki/Friends
+[^ 3a]: <https://en.wikipedia.org/wiki/Friends>
 [^4]: <https://hadoop.apache.org/docs/current/hadoop-aws/tools/hadoop-aws/index.html>
 [^5]: <https://stackoverflow.com/questions/33356041/technically-what-is-the-difference-between-s3n-s3a-and-s3>
 [^6]: <https://hadoop.apache.org/docs/current/hadoop-aws/tools/hadoop-aws/index.html#Stabilizing:_S3A_Fast_Upload>
