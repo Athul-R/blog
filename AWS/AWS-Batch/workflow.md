@@ -38,7 +38,7 @@ This blog is about AWS Batch Jobs and various ways you can create workflows usin
 
         For a given computer envirornment,  the queues have priorities. A compute environment would. execute a job from the highest proirity queue. (That job would have the highest priority within the queue)
 
-        ![img](file://../images/AWS%20-%20CE%20Priority.png)
+        ![img](../images/AWS%20-%20CE%20Priority.png)
 
         In the above diagram, the job 1 has higher priority in the job queue than job 2 which has higher priority than job 3 and so on. So does the compute environment. The compute environment 1 has higher priority than compute environment 2 than compute environment 3. So when job 1 and job 2 goes to a highest prior compute environment 1, the next jobs in queue would be executed in the next prior compute environment. So jobs 3 and 4 go to compute environment 2 and job 5 goes to  computer environment 3. Now, if job 1 gets finished before job 6 is executed, the slot of compute environment 1 is free. Therefore, job 6 would get executed in compute environment 1 even though compute environment 3 has a slot free for a job.
 
@@ -68,7 +68,7 @@ This blog is about AWS Batch Jobs and various ways you can create workflows usin
 
    Most often a batch process would be a part of the batch workflow. For instance, for the post-trade analytics, one has to filter the data, then process the data. After the data processing, one might need to do modeling (machine learning or statistical modeling) on it to derive insights. Each part of the post-trade analytics can be a batch process having depedency on the job preceding it.  As each stage of the post-trade analytics had different computational requirements, it is optimal to run each stage as a different batch job in the pipeline.
 
-   ![img](file://../images/AWS%20-%20Batch%20Pipeline.png)
+   ![img](../images/AWS%20-%20Batch%20Pipeline.png)
 
    To implement this workflow. You have to give the jobId of the preceding job during the job submission. The jobId of *Data Cleansing* 	 be specified at the submission of *Processing Cleaned Data*. The jobId of the *Processing Cleaned Data* must be specified at the submission of *Modeling*. And jobId of *Modeling* must be specified at the submission of *Store Insights*.
 
@@ -78,7 +78,7 @@ This blog is about AWS Batch Jobs and various ways you can create workflows usin
 
    I know it is bit hard to digest.  Let me explain with an example.
 
-   ![img](file://../images/AWS%20batch%20genereal.png)
+   ![img](../images/AWS%20batch%20genereal.png)
 
    In the above given workflow:
 
@@ -99,7 +99,7 @@ This blog is about AWS Batch Jobs and various ways you can create workflows usin
 
 4. **Master Job: How it works?**
 
-   ![img](file://../images/AWS%20-%20Batch%20Master%20Job.png)
+   ![img](../images/AWS%20-%20Batch%20Master%20Job.png)
 
    The master would:
 
@@ -180,10 +180,10 @@ An array job is job run parallel or concurrently in same host or mutliple host m
 
 - In case the dependant job (job Y) is SEQUENTIAL then the dependant job (job Y) would wait till all the array jobs (of job X) are completed.
 
-  ![img](file://../images/Array%20Jobs%20AWS%20-%20sequential.png)
+  ![img](../images/Array%20Jobs%20AWS%20-%20sequential.png)
 
 - If the dependant job is N_TO_N then the dependant job should have the same array size as the job X. In this case each array job in Job Y would wait for the corresponding array job in Job X to complete. Job Y:0 would depend on Job X:0 and wait till and Job X:0 is completed. Job Y:1 would depend on Job X:1 and so on.
 
-![img](file://../images/Array%20Jobs%20AWS.png?lastModify=1556521526)
+![img](../images/Array%20Jobs%20AWS.png?lastModify=1556521526)
 
 - Both in case of SEQUENTIAL and N_TO_N dependant jobs, cancellation or termination of any of the array jobs of Job X would lead to the cancellation of job X. This 'moves'  job X to `FAILED` status.[^12]
