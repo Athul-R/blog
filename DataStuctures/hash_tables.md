@@ -21,7 +21,7 @@ This hashing function output a number. This number would indicate the location o
 
 Hence hashes takes O(1) time to
 
-- access an element (It would take O(n) if it has collision.)
+- access an element 
 - delete an element
 - insert an element
 - search an element 
