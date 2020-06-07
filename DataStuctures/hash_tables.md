@@ -25,5 +25,6 @@ Hence hashes takes O(1) time to
 - delete an element
 - insert an element
 - search an element 
+- depending on the language, we have flexible key types (str, int etc.)
 
 The hashing function would be highly optimized. Explore more about hashing functions. 
